@@ -12,7 +12,8 @@ class Recipe extends Model
         'name',
         'ingredients',
         'duration',
-        'difficulty'
+        'difficulty',
+        'frequency',
     ];
 
     /**

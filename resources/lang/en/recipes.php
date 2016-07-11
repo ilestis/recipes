@@ -10,11 +10,23 @@ return [
     ],
 
     'fields' => [
+        'name' => 'Recipe name',
+        'ingredients' => 'Ingredients',
+        'duration' => 'Duration',
+        'difficulty' => 'Difficulty',
+        'frequency' => 'Frequency',
+    ],
+    'values' => [
         'difficulty' => [
             1 => 'Easy',
             2 => 'Normal',
             3 => 'Difficult',
             4 => 'God Mode',
+        ],
+        'frequency' => [
+            'weekly' => 'Weekly',
+            'bi-weekly' => 'Bi-weekly',
+            'monthly' => 'Monthly',
         ]
-    ]
+    ],
 ];

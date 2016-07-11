@@ -22,9 +22,10 @@
 
                 <!-- Table Headings -->
                 <thead>
-                <th>Recipe Name</th>
-                <th>Duration</th>
-                <th>Difficulty</th>
+                <th>{{ trans('recipes.fields.name') }}</th>
+                <th>{{ trans('recipes.fields.duration') }}</th>
+                <th>{{ trans('recipes.fields.difficulty') }}</th>
+                <th>{{ trans('recipes.fields.frequency') }}</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
                 </thead>
@@ -41,7 +42,10 @@
                             <div>{{ $recipe->duration }}</div>
                         </td>
                         <td class="table-text">
-                            <div>{{ trans('recipes.fields.difficulty.' . $recipe->difficulty) }}</div>
+                            <div>{{ trans('recipes.values.difficulty.' . $recipe->difficulty) }}</div>
+                        </td>
+                        <td class="table-text">
+                            <div>{{ trans('recipes.values.frequency.' . $recipe->frequency) }}</div>
                         </td>
                         <td>
                             <a href="{{ route('recipe.edit', ['id' => $recipe->id]) }}" class="btn btn-primary pull-right">
