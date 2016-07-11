@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DateTime;
 
 class Planning extends Model
 {
@@ -48,5 +49,13 @@ class Planning extends Model
     {
         return $query->whereRaw('DATE(day) >= ' . date('Y-m-d'));
     }
-    
+
+    /**
+     * @return string
+     */
+    public function getFormattedDay()
+    {
+        $date = new DateTime($this->day);
+        return $date->format('l jS \of F Y');
+    }
 }

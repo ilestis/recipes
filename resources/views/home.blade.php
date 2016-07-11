@@ -31,7 +31,7 @@
                 <thead>
                 <th>{{ trans('plannings.fields.recipe_id') }}</th>
                 <th>{{ trans('plannings.fields.day') }}</th>
-                <th>{{ trans('plannings.fields.is_lunch') }}</th>
+                <th>{{ trans('plannings.fields.time') }}</th>
                 <th>&nbsp;</th>
                 </thead>
 
@@ -44,10 +44,10 @@
                             <div>{{ $planning->recipe->name }}</div>
                         </td>
                         <td class="table-text">
-                            <div>{{ $planning->day}}</div>
+                            <div>{{ $planning->getFormattedDay() }}</div>
                         </td>
                         <td class="table-text">
-                            <div>{{ $planning->is_lunch }}</div>
+                            <div>{{ trans('plannings.values.time.' . $planning->is_lunch) }}</div>
                         </td>
                         <td>
                             <a href="{{ route('planning.edit', ['id' => $planning->id]) }}" class="btn btn-primary pull-right">

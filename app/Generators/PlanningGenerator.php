@@ -44,6 +44,9 @@ class PlanningGenerator
         $this->isLunch = $this->date->format('H') < 12 ? true : false;
     }
 
+    /**
+     * @param User $user
+     */
     public function generate(User $user)
     {
         // Check upcoming meals
@@ -101,9 +104,7 @@ class PlanningGenerator
             // Check if it's a meal we want to track
             $day = strtolower($this->date->format('l')) . '_' . ($this->isLunch ? 'lunch' : 'evening');
 
-            echo "check for " . $setting->$day . "<br />";
             if ($setting->$day) {
-                echo "ok!<br />";
                 $newDateIsValid = true;
             }
         }

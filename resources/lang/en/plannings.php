@@ -5,6 +5,14 @@ return [
         'recipe_id' => 'Recipe',
         'day' => 'Day',
         'is_lunch' => 'Lunch',
+        'time' => 'Time',
+    ],
+
+    'values' => [
+        'time' => [
+            0 => 'Evening',
+            1 => 'Lunch'
+        ]
     ],
 
     'validation' => [
