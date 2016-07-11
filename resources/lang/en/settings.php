@@ -6,7 +6,7 @@ return [
     'fields' => [
         'monday_lunch' => 'Monday Lunch',
         'monday_evening' => 'Monday Evening',
-        'tuesday_lunch' => ' Lunch',
+        'tuesday_lunch' => 'Tuesday Lunch',
         'tuesday_evening' => 'Tuesday Evening',
         'wednesday_lunch' => 'Wednesday Lunch',
         'wednesday_evening' => 'Wednesday Evening',

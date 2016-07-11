@@ -5,9 +5,9 @@ namespace App\Policies;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 use App\User;
-use App\Recipe;
+use App\Planning;
 
-class RecipePolicy
+class PlanningPolicy
 {
     use HandlesAuthorization;
 
@@ -23,21 +23,21 @@ class RecipePolicy
 
     /**
      * @param User $user
-     * @param Recipe $recipe
+     * @param Planning $planning
      * @return bool
      */
-    public function update(User $user, Recipe $recipe)
+    public function update(User $user, Planning $planning)
     {
-        return $user->id === $recipe->user_id;
+        return $user->id === $planning->user_id;
     }
 
     /**
      * @param User $user
-     * @param Recipe $recipe
+     * @param Planning $planning
      * @return bool
      */
-    public function destroy(User $user, Recipe $recipe)
+    public function destroy(User $user, Planning $planning)
     {
-        return $user->id === $recipe->user_id;
+        return $user->id === $planning->user_id;
     }
 }

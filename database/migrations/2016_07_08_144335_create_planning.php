@@ -12,7 +12,7 @@ class CreatePlanning extends Migration
      */
     public function up()
     {
-        Schema::create('planning', function(Blueprint $table) {
+        Schema::create('plannings', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('recipe_id')->unsigned();

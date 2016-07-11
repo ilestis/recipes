@@ -15,6 +15,8 @@ class UserSettingController extends Controller
      */
     protected $userSettings;
 
+    protected $days;
+
     /**
      * RecipesController constructor.
      * @param SeasonRepository $recipes
@@ -24,18 +26,8 @@ class UserSettingController extends Controller
         $this->middleware('auth');
 
         $this->userSettings = $userSettings;
-    }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
-    public function index(Request $request)
-    {
-        $this->userSettings->init($request->user());
-        
-        $setting = $request->user()->settings;
-        $days = [
+        $this->days = [
             'monday_lunch',
             'monday_evening',
             'tuesday_lunch',
@@ -51,6 +43,18 @@ class UserSettingController extends Controller
             'sunday_lunch',
             'sunday_evening',
         ];
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function index(Request $request)
+    {
+        $this->userSettings->init($request->user());
+        
+        $setting = $request->user()->settings;
+        $days = $this->days;
         return view('settings.index', compact('setting', 'days'));
     }
 
@@ -65,7 +69,9 @@ class UserSettingController extends Controller
         $this->validate($request, [
         ]);
 
-        $setting->fill($request->all());
+        foreach ($this->days as $day) {
+            $setting->setAttribute($day, $request->has($day));
+        }
         $setting->save();
 
         return redirect('settings')->with('success', 'settings.validation.update');

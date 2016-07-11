@@ -33,6 +33,14 @@ class Recipe extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function plannings()
+    {
+        return $this->hasMany(Planning::class, 'recipe_id');
+    }
+
+    /**
      * @return mixed
      */
     public function getSeasonsAttribute()
@@ -46,5 +54,14 @@ class Recipe extends Model
     public function getDurationAttribute($value)
     {
         return substr($value, 0, 5);
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeLatest($query)
+    {
+        return $query->leftJoin('plannings', 'plannings.recipe_id', '=', 'recipes.id');
     }
 }

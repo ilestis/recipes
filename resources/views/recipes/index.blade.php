@@ -8,9 +8,10 @@
         @include('common.flashs')
 
         <p>Your very own recipe list! You can enter as many as you want, so don't be shy.</p>
-
-        {{ link_to('recipe/create', 'New Recipe', ['class' => 'btn btn-primary']) }}
 </div>
+
+{{ link_to('recipe/create', 'New Recipe', ['class' => 'btn btn-primary']) }}
+
 @if (count($recipes) > 0)
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -67,6 +68,8 @@
                 @endforeach
                 </tbody>
             </table>
+
+            {!! $recipes->render() !!}
         </div>
     </div>
 @endif

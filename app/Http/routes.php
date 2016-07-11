@@ -18,9 +18,11 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/generate', 'HomeController@generate');
 
 Route::resource('recipe', 'RecipeController');
 Route::resource('season', 'SeasonController');
+Route::resource('planning', 'PlanningController');
 
-Route::get('/settings', 'UserSettingController@index');
-Route::post('/settings', ['as' => 'settings.store', 'use' => 'UserSettingController@update']);
+Route::get('settings', 'UserSettingController@index');
+Route::post('settings', 'UserSettingController@update')->name('settings.store');

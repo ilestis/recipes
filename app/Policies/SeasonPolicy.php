@@ -21,6 +21,11 @@ class SeasonPolicy
         //
     }
 
+    /**
+     * @param User $user
+     * @param Season $season
+     * @return bool
+     */
     public function destroy(User $user, Season $season)
     {
         return $user->id === 1;// Admin user?
