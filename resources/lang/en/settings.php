@@ -3,6 +3,12 @@
 return [
     'heading' => 'Tell us which meals you want to have the app fill out for you.',
 
+    'validation' => [
+        'update' => 'Your settings have been updated.',
+    ],
+
+    'redirect_no_settings' => 'Before you can start setting up some recipes and enjoy the app, we need to know what meals you want us to take care of for you.',
+
     'fields' => [
         'monday_lunch' => 'Monday Lunch',
         'monday_evening' => 'Monday Evening',

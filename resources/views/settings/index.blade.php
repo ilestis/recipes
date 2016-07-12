@@ -22,6 +22,8 @@
             </div>
         @endforeach
 
+        <p><br /></p>
+
         <!-- Add Task Button -->
         <div class="form-group">
             {!! Form::submit('Save Settings', ['class' => 'btn btn-primary btn-block']) !!}
