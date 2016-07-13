@@ -13,9 +13,11 @@
 <div class="form-group">
     {{ Form::label('is_lunch', trans('plannings.fields.is_lunch'), ['class' => 'control-label']) }}
     {{ Form::checkbox('is_lunch', '1', null) }}
+    <p class="help-block">{{ trans('plannings.helpers.is_lunch') }}</p>
+
 </div>
 
 
 <div class="form-group">
-    {!! Form::submit('Save Planning', ['class' => 'btn btn-primary btn-block']) !!}
+    {!! Form::submit(trans('plannings.actions.save'), ['class' => 'btn btn-primary btn-block sr-button']) !!}
 </div>

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'home' => 'Home',
+    'home' => 'Planner',
     'recipes' => 'Recipes',
     'seasons' => 'Seasons',
     'settings' => 'Settings',

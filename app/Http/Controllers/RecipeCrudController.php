@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Recipe;
 
-class RecipeController extends Controller
+class RecipeCrudController extends Controller
 {
     /**
      * @var RecipeRepository

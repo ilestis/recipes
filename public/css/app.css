@@ -1,0 +1,12 @@
+header.small {
+    height: 30% !important;
+    min-height: 30% !important;
+}
+
+section {
+    padding: 50px 0;
+}
+
+section.big, aside,big {
+    padding: 100px 0;
+}

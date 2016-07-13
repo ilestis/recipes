@@ -17,12 +17,13 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-Route::get('/generate', 'HomeController@generate');
+Route::get('/home', 'PlanningController@index');
+Route::get('generate', 'PlanningController@generate');
+Route::get('history', 'PlanningController@history');
 
-Route::resource('recipe', 'RecipeController');
-Route::resource('season', 'SeasonController');
-Route::resource('planning', 'PlanningController');
+Route::resource('recipe', 'RecipeCrudController');
+Route::resource('season', 'SeasonCrudController');
+Route::resource('planning', 'PlanningCrudController');
 
 Route::get('settings', 'UserSettingController@index');
 Route::post('settings', 'UserSettingController@update')->name('settings.store');

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Season;
 
-class SeasonController extends Controller
+class SeasonCrudController extends Controller
 {
     /**
      * @var SeasonRepository

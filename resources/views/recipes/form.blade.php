@@ -35,5 +35,5 @@
 
 
 <div class="form-group">
-    {!! Form::submit('Save Recipe', ['class' => 'btn btn-primary btn-block']) !!}
+    {!! Form::submit('Save Recipe', ['class' => 'btn btn-primary btn-block sr-button']) !!}
 </div>

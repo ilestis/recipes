@@ -1,34 +1,32 @@
 @extends('layouts.app')
 
+@include('layouts.header', ['title' => 'Create a Season'])
+
 @section('content')
+    <section id="seasonCreate">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    @include('common.flashs')
+
+                    {!! Form::open(['route' => 'season.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
+                     {{ csrf_field() }}
 
 
-<div class="panel-body">
-    <h1>New Season</h1>
-    @include('common.flashs')
+                        <div class="form-group">
+                            {!! Form::label('name', trans('seasons.fields.name'), ['class' => 'control-label']) !!}
+                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                        </div>
 
-            <!-- New Task Form -->
-    <form action="{{ url('season') }}" method="POST" class="form-horizontal">
-        {{ csrf_field() }}
-
-        <div class="form-group">
-            <label for="name" class="col-sm-3 control-label">Season Name</label>
-
-            <div class="col-sm-6">
-                <input type="text" name="name" id="season-name" class="form-control">
+                        <div class="form-group">
+                            {!! Form::submit(trans('seasons.actions.save'), ['class' => 'btn btn-primary btn-block sr-button']) !!}
+                        </div>
+                    {!! Form::close() !!}
+                </div>
+                <div class="col-lg-12 text-center">
+                    {{ link_to('season', trans('seasons.actions.back'), ['class' => 'btn btn-default']) }}
+                </div>
             </div>
         </div>
-
-        <!-- Add Task Button -->
-        <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-6">
-                <button type="submit" class="btn btn-default">
-                    <i class="fa fa-plus"></i> Add Season
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
-
-<!-- TODO: Current Tasks -->
+    </section>
 @endsection

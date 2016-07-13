@@ -29,6 +29,21 @@ class PlanningRepository
     {
         return $this->planning->userId($user->id)
             ->with('recipe')
+            ->where('day', '>=', date('Y-m-d'))
+            ->orderBy('day', 'ASC')
+            ->orderBy('is_lunch', 'ASC')
+            ->paginate(10);
+    }
+
+    /**
+     * @param User $user
+     * @return mixed
+     */
+    public function passedForUser(User $user)
+    {
+        return $this->planning->userId($user->id)
+            ->with('recipe')
+            ->where('day', '<', date('Y-m-d'))
             ->orderBy('day', 'DESC')
             ->orderBy('is_lunch', 'DESC')
             ->paginate(10);

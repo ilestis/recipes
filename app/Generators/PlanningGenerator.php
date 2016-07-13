@@ -30,6 +30,11 @@ class PlanningGenerator
      */
     protected $isLunch;
 
+    /**
+     * @var DateTime
+     */
+    protected $maxDate;
+
 
     /**
      * PlanningGenerator constructor.
@@ -42,6 +47,9 @@ class PlanningGenerator
 
         $this->date = new DateTime();
         $this->isLunch = $this->date->format('H') < 12 ? true : false;
+
+        $this->maxDate = new DateTime();
+        $this->maxDate->modify('+8 days');
     }
 
     /**
@@ -74,12 +82,16 @@ class PlanningGenerator
 
         // Loop through the recipes and add them
         foreach($randomRecipes as $recipe) {
-            $planning = $this->planning->newInstance();
-            $planning->recipe_id = $recipe->id;
-            $planning->user_id = $user->id;
-            $planning->day = $this->date->format('Y-m-d');
-            $planning->is_lunch = $this->isLunch;
-            $planning->save();
+            // If the date isn't passed
+            if ($this->date <= $this->maxDate) {
+                $planning = $this->planning->newInstance();
+                $planning->recipe_id = $recipe->id;
+                $planning->user_id = $user->id;
+                $planning->day = $this->date->format('Y-m-d');
+                $planning->is_lunch = $this->isLunch;
+                $planning->save();
+            }
+            
 
             // Update next date
             $this->calculateNextDate($setting);

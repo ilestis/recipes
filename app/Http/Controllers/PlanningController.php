@@ -2,97 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Repositories\PlanningRepository;
+use App\Generators\PlanningGenerator;
 use App\Http\Requests;
-use App\Planning;
+use Illuminate\Http\Request;
 
 class PlanningController extends Controller
 {
     /**
-     * @var Planning
+     * @var PlanningRepository
      */
-    protected $model;
+    protected $repository;
+    
+    /**
+     * @var PlanningGenerator
+     */
+    protected $generator;
 
     /**
-     * PlanningController constructor.
-     * @param Planning $model
+     * Create a new controller instance.
+     *
+     * @return void
      */
-    public function __construct(Planning $model)
+    public function __construct(PlanningRepository $repository, PlanningGenerator $generator)
     {
-        $this->middleware('auth');
-        $this->model = $model;
+        $this->middleware(['auth', 'user.settings', 'recipes']);
+        $this->repository = $repository;;
+        $this->generator = $generator;
     }
 
     /**
-     * @return mixed
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function index(Request $request)
     {
-        $recipes = $request->user()->recipes()->orderBy('name')->lists('name', 'id');
-        return view('plannings.create', compact('recipes'));
-    }
-
-    /**
-     * @param Request $request
-     * @return mixed
-     */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'recipe_id' => 'required|exists:recipes,id',
-            'day' => 'required',
-        ]);
-
-        $planning = $request->user()->plannings()->create($request->all());
-
-        return redirect('home')->with('success', 'plannings.validation.create');
+        $plannings = $this->repository->forUser($request->user());
+        return view('plannings.index', compact('plannings'));
     }
 
     /**
      * @param Request $request
-     * @param Recipe $recipe
      * @return mixed
      */
-    public function edit(Request $request, Planning $planning)
+    public function generate(Request $request)
     {
-        $this->authorize('update', $planning);
-        
-        $recipes = $request->user()->recipes()->orderBy('name')->lists('name', 'id');
-        return view('plannings.edit', compact('planning', 'recipes'));
+        $this->generator->generate($request->user());
+        return redirect('home')->with('success', 'plannings.validation.generated');
     }
-
+    
     /**
-     * @param Request $request
-     * @param Recipe $recipe
-     * @return mixed
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Planning $planning)
+    public function history(Request $request)
     {
-        $this->authorize('update', $planning);
-
-        $this->validate($request, [
-            'recipe_id' => 'required|exists:recipes,id',
-            'day' => 'required',
-        ]);
-
-        $planning->fill($request->all())->save();
-
-        return redirect('home')->with('success', 'plannings.validation.update');
-    }
-
-    /**
-     * @param Request $request
-     * @param Recipe $recipe
-     * @return mixed
-     * @throws \Exception
-     */
-    public function destroy(Request $request, Planning $planning)
-    {
-        $this->authorize('destroy', $planning);
-
-        $planning->delete();
-
-        return redirect('home')->with('success', 'plannings.validation.delete');
+        $plannings = $this->repository->passedForUser($request->user());
+        $history = true;
+        return view('plannings.history', compact('plannings', 'history'));
     }
 }
