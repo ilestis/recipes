@@ -115,7 +115,7 @@ class RecipeCrudController extends Controller
         if (count($recipe->plannings) > 0) {
             return redirect('recipe')->with('error', 'recipes.errors.delete');
         }
-        $recipe->plannings()->detach();
+        $recipe->plannings->detach();
         $recipe->delete();
 
         return redirect('recipe')->with('success', 'recipes.validation.delete');
