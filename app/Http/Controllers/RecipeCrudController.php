@@ -110,6 +110,9 @@ class RecipeCrudController extends Controller
     {
         $this->authorize('destroy', $recipe);
 
+        if (count($recipe->plannings) > 0) {
+            return redirect('recipe')->with('error', 'recipes.errors.delete');
+        }
         $recipe->delete();
 
         return redirect('recipe')->with('success', 'recipes.validation.delete');

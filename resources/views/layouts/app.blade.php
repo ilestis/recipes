@@ -55,12 +55,12 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url('/home') }}">{{ trans('menu.home') }}</a></li>
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">{{ trans('menu.login') }}</a></li>
                         <li><a href="{{ url('/register') }}">{{ trans('menu.register') }}</a></li>
                     @else
+                        <li><a href="{{ url('/home') }}">{{ trans('menu.home') }}</a></li>
                         <li><a href="{{ url('/recipe') }}">{{ trans('menu.recipes') }}</a></li>
                         @if(Auth::user()->id == 1)
                             <li><a href="{{ url('/season') }}">{{ trans('menu.seasons') }}</a></li>

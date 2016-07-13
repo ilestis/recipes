@@ -13,8 +13,17 @@
 </div>
 @endif
 
+@if (session('error'))
+    <div class="alert alert-danger">
+        <strong>Whoops! Something went wrong!</strong>
+
+        <br><br>
+
+        {{ trans(session('error')) }}
+    </div>
+@endif
+
 @if (session('info'))
-        <!-- Form Error List -->
 <div class="alert alert-info">
     <strong>Hey!</strong>
 

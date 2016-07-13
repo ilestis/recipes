@@ -10,6 +10,9 @@ return [
         'update' => 'Your recipe has been updated.',
         'delete' => 'Your recipe has been removed.',
     ],
+    'errors' => [
+        'delete' => 'You can\'t delete a Recipe that has been used for a planned meal.',
+    ],
 
     'actions' => [
         'save' => 'Save',
