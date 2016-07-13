@@ -28,7 +28,7 @@ class PlanningPolicy
      */
     public function update(User $user, Planning $planning)
     {
-        return $user->id === $planning->user_id;
+        return $user->id == $planning->user_id;
     }
 
     /**
@@ -38,6 +38,6 @@ class PlanningPolicy
      */
     public function destroy(User $user, Planning $planning)
     {
-        return $user->id === $planning->user_id;
+        return $user->id == $planning->user_id;
     }
 }

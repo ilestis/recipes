@@ -28,6 +28,6 @@ class SeasonPolicy
      */
     public function destroy(User $user, Season $season)
     {
-        return $user->id === 1;// Admin user?
+        return $user->id == 1;// Admin user?
     }
 }

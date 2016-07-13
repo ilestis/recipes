@@ -28,7 +28,7 @@ class RecipePolicy
      */
     public function update(User $user, Recipe $recipe)
     {
-        return $user->id === $recipe->user_id;
+        return $user->id == $recipe->user_id;
     }
 
     /**
@@ -38,6 +38,6 @@ class RecipePolicy
      */
     public function destroy(User $user, Recipe $recipe)
     {
-        return $user->id === $recipe->user_id;
+        return $user->id == $recipe->user_id;
     }
 }
