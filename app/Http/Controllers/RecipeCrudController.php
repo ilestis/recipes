@@ -60,7 +60,8 @@ class RecipeCrudController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255'
+            'name' => 'required|min:3|max:255',
+            'seasons' => 'required',
         ]);
 
         $recipe = $request->user()->recipes()->create($request->all());
@@ -91,7 +92,8 @@ class RecipeCrudController extends Controller
         $this->authorize('update', $recipe);
 
         $this->validate($request, [
-            'name' => 'required|max:255'
+            'name' => 'required|min:3|max:255',
+            'seasons' => 'required',
         ]);
 
         $recipe->fill($request->all())->save();
