@@ -23,7 +23,7 @@
             </div>
         </div>
     </section>
-    <section id="services big">
+    <section id="services" class="big">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
