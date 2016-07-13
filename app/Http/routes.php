@@ -12,12 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::guest()) {
+        return view('welcome');
+    } else {
+        return redirect('home');
+    }
 });
 
 Route::auth();
 
-Route::get('/home', 'PlanningController@index');
+Route::get('home', 'PlanningController@index');
 Route::get('generate', 'PlanningController@generate');
 Route::get('history', 'PlanningController@history');
 

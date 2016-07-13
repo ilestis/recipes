@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
+@include('layouts.header', ['title' => 'Reset Password'])
+
 <!-- Main Content -->
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
+    <section id="authPasswordEmail">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -42,6 +42,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 @endsection

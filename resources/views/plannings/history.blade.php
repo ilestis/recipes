@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section id="planning">
+<section id="planningHistory">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
