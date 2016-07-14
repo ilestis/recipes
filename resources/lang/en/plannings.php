@@ -18,6 +18,8 @@ return [
         'edit' => 'Edit',
         'history' => 'View had meals',
         'back' => 'Back to Planning',
+        'show' => 'Show',
+        'generate' => 'Generate meals for the next few days'
     ],
 
     'values' => [
@@ -39,5 +41,9 @@ return [
         'actions' => [
             'back' => 'Back to Planning',
         ]
+    ],
+
+    'view' => [
+        'title' => 'View Planning',
     ]
 ];

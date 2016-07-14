@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <p>
                     {{ trans('plannings.header') }}
-                    {{ link_to('generate', 'Generate Planning', ['class' => 'btn btn-primary pull-right']) }}
+                    {{ link_to('generate', trans('plannings.actions.generate'), ['class' => 'btn btn-primary pull-right']) }}
                 </p>
 
                 @include('common.flashs')
@@ -41,8 +41,8 @@
                                 <div>{{ trans('plannings.values.time.' . $planning->is_lunch) }}</div>
                             </td>
                             <td>
-                                <a href="{{ route('planning.edit', ['id' => $planning->id]) }}" class="btn btn-primary pull-right">
-                                    <i class="fa fa-btn fa-pencil"></i>{{ trans('plannings.actions.edit') }}
+                                <a href="{{ route('planning.show', ['id' => $planning->id]) }}" class="btn btn-primary pull-right">
+                                    <i class="fa fa-btn fa-eye"></i>{{ trans('plannings.actions.show') }}
                                 </a>
                             </td>
                         </tr>

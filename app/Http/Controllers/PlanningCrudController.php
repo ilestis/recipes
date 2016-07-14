@@ -35,6 +35,17 @@ class PlanningCrudController extends Controller
 
     /**
      * @param Request $request
+     * @param Recipe $recipe
+     * @return mixed
+     */
+    public function show(Request $request, Planning $planning)
+    {
+        $this->authorize('view', $planning);
+        return view('plannings.view', compact('planning'));
+    }
+
+    /**
+     * @param Request $request
      * @return mixed
      */
     public function store(Request $request)

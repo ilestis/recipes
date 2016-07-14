@@ -26,6 +26,16 @@ class PlanningPolicy
      * @param Planning $planning
      * @return bool
      */
+    public function view(User $user, Planning $planning)
+    {
+        return $user->id == $planning->user_id;    
+    }
+    
+    /**
+     * @param User $user
+     * @param Planning $planning
+     * @return bool
+     */
     public function update(User $user, Planning $planning)
     {
         return $user->id == $planning->user_id;
