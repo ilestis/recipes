@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@include('layouts.header', ['title' => trans('plannings.title')])
+@include('layouts.header', ['title' => trans('plannings.titles.index')])
 
 @section('content')
 
@@ -20,10 +20,10 @@
 
                     <!-- Table Headings -->
                     <thead>
-                    <th>{{ trans('plannings.fields.recipe_id') }}</th>
-                    <th>{{ trans('plannings.fields.day') }}</th>
-                    <th>{{ trans('plannings.fields.time') }}</th>
-                    <th>&nbsp;</th>
+                        <th>{{ trans('plannings.fields.recipe_id') }}</th>
+                        <th>{{ trans('plannings.fields.day') }}</th>
+                        <th>{{ trans('plannings.fields.time') }}</th>
+                        <th>&nbsp;</th>
                     </thead>
 
                     <!-- Table Body -->
@@ -32,7 +32,7 @@
                         <tr>
                             <!-- Task Name -->
                             <td class="table-text">
-                                <div>{{ $planning->recipe->name }}</div>
+                                <div>{{ link_to_route('recipe.show', $planning->recipe->name, ['id' => $planning->recipe_id]) }}</div>
                             </td>
                             <td class="table-text">
                                 <div>{{ $planning->getFormattedDay() }}</div>
@@ -52,7 +52,7 @@
 
                 {!! $plannings->render() !!}
             @else
-                    <p>You have no planned upcomming meals yet!</p>
+                    <p>{{ trans('plannings.nothing_planned') }}</p>
             @endif
             </div>
             <div class="col-lg-12 text-center">

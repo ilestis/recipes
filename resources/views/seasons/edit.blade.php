@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@include('layouts.header', ['title' => trans('recipes.titles.create')])
+@include('layouts.header', ['title' => trans('seasons.titles.edit')])
 
 @section('content')
-    <section id="planning">
+    <section id="seasonEdit">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     @include('common.flashs')
 
-                    {!! Form::open(['route' => 'recipe.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
-                        @include('recipes.form')
+                    {!! Form::model($season, ['method' => 'PUT', 'route' => ['season.update', $season->id], 'class' => 'form-horizontal']) !!}
+                        @include('seasons.form')
                     {!! Form::close() !!}
                 </div>
                 <div class="col-lg-12">

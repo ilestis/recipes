@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@include('layouts.header', ['title' => trans('plannings.view.title')])
+@include('layouts.header', ['title' => trans('plannings.titles.view')])
 
 @section('content')
 
@@ -13,7 +13,7 @@
 
                 <dl class="dl-horizontal">
                     <dt>{{ trans('recipes.fields.name') }}</dt>
-                    <dd>{{ $planning->recipe->name }}</dd>
+                    <dd>{{ link_to_route('recipe.show', $planning->recipe->name, ['id' => $planning->recipe_id]) }}</dd>
 
                     <dt>{{ trans('recipes.fields.ingredients') }}</dt>
                     <dd>{!! nl2br(e($planning->recipe->ingredients)) !!}</dd>
@@ -31,12 +31,25 @@
                 </dl>
 
             </div>
-            <div class="col-lg-12">
-                {{ link_to('home', trans('plannings.actions.back'), ['class' => 'btn btn-default pull-left']) }}
+            <div class="col-lg-4">
+                {{ link_to('home', trans('plannings.actions.back'), ['class' => 'btn btn-default btn-lg btn-block']) }}
+            </div>
 
-                <a href="{{ route('planning.edit', ['id' => $planning->id]) }}" class="btn btn-primary pull-right">
+            <div class="col-lg-4">
+                <a href="{{ route('planning.edit', ['id' => $planning->id]) }}" class="btn btn-primary btn-lg btn-block">
                     <i class="fa fa-btn fa-pencil"></i>{{ trans('plannings.actions.edit') }}
                 </a>
+            </div>
+
+            <div class="col-lg-4">
+                <form action="{{ url('planning/' . $planning->id) }}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+
+                    <button type="submit" id="delete-planning-{{ $planning->id }}" class="btn btn-danger btn-lg btn-block">
+                        <i class="fa fa-btn fa-trash"></i>{{ trans('plannings.actions.delete') }}
+                    </button>
+                </form>
             </div>
         </div>
     </div>

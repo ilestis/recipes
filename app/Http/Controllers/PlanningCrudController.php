@@ -57,7 +57,7 @@ class PlanningCrudController extends Controller
 
         $planning = $request->user()->plannings()->create($request->all());
 
-        return redirect('home')->with('success', 'plannings.validation.create');
+        return redirect('home')->with('success', 'plannings.validations.created');
     }
 
     /**
@@ -89,7 +89,7 @@ class PlanningCrudController extends Controller
 
         $planning->fill($request->all())->save();
 
-        return redirect('home')->with('success', 'plannings.validation.update');
+        return redirect('home')->with('success', 'plannings.validations.updated');
     }
 
     /**
@@ -104,6 +104,6 @@ class PlanningCrudController extends Controller
 
         $planning->delete();
 
-        return redirect('home')->with('success', 'plannings.validation.delete');
+        return redirect('home')->with('success', 'plannings.validations.deleted');
     }
 }

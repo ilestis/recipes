@@ -7,6 +7,7 @@ use App\User;
 use App\Repositories\RecipeRepository;
 use App\UserSetting;
 use DateTime;
+use Exception;
 
 class PlanningGenerator
 {
@@ -78,10 +79,11 @@ class PlanningGenerator
         $this->calculateNextDate($setting);
 
         // Now, start generating
-        $randomRecipes = $this->recipes->getRandomRecipesForUser($user);
+        $months = $this->generateCurrentSeasons();
+        $randomRecipes = $this->recipes->getRandomRecipesForUser($user, $months);
 
         // Loop through the recipes and add them
-        foreach($randomRecipes as $recipe) {
+        foreach ($randomRecipes as $recipe) {
             // If the date isn't passed
             if ($this->date <= $this->maxDate) {
                 $planning = $this->planning->newInstance();
@@ -96,6 +98,14 @@ class PlanningGenerator
             // Update next date
             $this->calculateNextDate($setting);
         }
+
+        if (count($randomRecipes) == 0) {
+            throw new Exception('no_recipes');
+        } elseif (count($randomRecipes) < 5) {
+            throw new Exception('not_enough_recipes');
+        }
+
+        return true;
     }
 
     /**
@@ -120,5 +130,37 @@ class PlanningGenerator
                 $newDateIsValid = true;
             }
         }
+    }
+
+    /**
+     * Determine what months need to be looked for
+     * @return array
+     */
+    protected function generateCurrentSeasons()
+    {
+        $month = date('m');
+        $months = [];
+
+        // March to June, spring
+        if ($month >= 3 and $month <= 6) {
+            $months[] = 1;
+        }
+
+        // June to September, summer
+        if ($month >= 6 and $month <= 9) {
+            $months[] = 2;
+        }
+
+        // September to December, Autumn
+        if ($month >= 9) {
+            $months[] = 3;
+        }
+
+        // December to March, winter
+        if ($month <= 3 || $month >= 12) {
+            $months[] = 4;
+        }
+
+        return $months;
     }
 }

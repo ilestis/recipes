@@ -19,12 +19,10 @@
 
                     <!-- Table Headings -->
                     <thead>
-                    <th>{{ trans('plannings.fields.recipe_id') }}</th>
-                    <th>{{ trans('plannings.fields.day') }}</th>
-                    <th>{{ trans('plannings.fields.time') }}</th>
-                    @if (!$history)
+                        <th>{{ trans('plannings.fields.recipe_id') }}</th>
+                        <th>{{ trans('plannings.fields.day') }}</th>
+                        <th>{{ trans('plannings.fields.time') }}</th>
                         <th>&nbsp;</th>
-                    @endif
                     </thead>
 
                     <!-- Table Body -->
@@ -33,7 +31,7 @@
                         <tr>
                             <!-- Task Name -->
                             <td class="table-text">
-                                <div>{{ $planning->recipe->name }}</div>
+                                <div>{{ link_to_route('recipe.show', $planning->recipe->name, ['id' => $planning->recipe_id]) }}</div>
                             </td>
                             <td class="table-text">
                                 <div>{{ $planning->getFormattedDay() }}</div>
@@ -41,13 +39,11 @@
                             <td class="table-text">
                                 <div>{{ trans('plannings.values.time.' . $planning->is_lunch) }}</div>
                             </td>
-                            @if (!$history)
                             <td>
-                                <a href="{{ route('planning.edit', ['id' => $planning->id]) }}" class="btn btn-primary pull-right">
-                                    <i class="fa fa-btn fa-pencil"></i>{{ trans('plannings.actions.edit') }}
+                                <a href="{{ route('planning.show', ['id' => $planning->id]) }}" class="btn btn-primary pull-right">
+                                    <i class="fa fa-btn fa-eye"></i>{{ trans('plannings.actions.show') }}
                                 </a>
                             </td>
-                            @endif
                         </tr>
                     @endforeach
                     </tbody>
@@ -55,7 +51,7 @@
 
                 {!! $plannings->render() !!}
             @else
-                    <p>You have no passed plannings.</p>
+                    <p>{{ trans('plannings.history.no_history') }}.</p>
             @endif
 
             </div>

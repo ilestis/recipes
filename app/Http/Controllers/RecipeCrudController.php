@@ -45,6 +45,17 @@ class RecipeCrudController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param Recipe $recipe
+     * @return mixed
+     */
+    public function show(Request $request, Recipe $recipe)
+    {
+        $this->authorize('view', $recipe);
+        return view('recipes.view', compact('recipe'));
+    }
+
+    /**
      * @return mixed
      */
     public function create()
@@ -67,7 +78,7 @@ class RecipeCrudController extends Controller
         $recipe = $request->user()->recipes()->create($request->all());
         $recipe->seasons()->sync($request['seasons']);
 
-        return redirect('recipe')->with('success', 'recipes.validation.create');
+        return redirect('recipe')->with('success', 'recipes.validations.create');
     }
 
     /**
@@ -99,7 +110,7 @@ class RecipeCrudController extends Controller
         $recipe->fill($request->all())->save();
         $recipe->seasons()->sync($request['seasons']);
 
-        return redirect('recipe')->with('success', 'recipes.validation.update');
+        return redirect('recipe')->with('success', 'recipes.validations.update');
     }
 
     /**
@@ -118,6 +129,6 @@ class RecipeCrudController extends Controller
         $recipe->seasons()->detach();
         $recipe->delete();
 
-        return redirect('recipe')->with('success', 'recipes.validation.delete');
+        return redirect('recipe')->with('success', 'recipes.validations.delete');
     }
 }

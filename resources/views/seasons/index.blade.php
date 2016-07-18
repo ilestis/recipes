@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@include('layouts.header', ['title' => 'Seasons'])
+@include('layouts.header', ['title' => trans('seasons.titles.index')])
 
 @section('content')
     <section id="seasons">
@@ -20,7 +20,6 @@
                         <!-- Table Headings -->
                         <thead>
                         <th>{{ trans('seasons.fields.name') }}</th>
-                        <th>&nbsp;</th>
                         </thead>
 
                         <!-- Table Body -->
@@ -29,17 +28,7 @@
                             <tr>
                                 <!-- Task Name -->
                                 <td class="table-text">
-                                    <div>{{ $season->name }}</div>
-                                </td>
-                                <td>
-                                    <form action="{{ url('season/' . $season->id) }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-
-                                        <button type="submit" id="delete-season-{{ $season->id }}" class="btn btn-danger pull-right">
-                                            <i class="fa fa-btn fa-trash"></i>{{ trans('seasons.actions.delete') }}
-                                        </button>
-                                    </form>
+                                    <div>{{ link_to_route('season.edit', $season->name, $season->id) }}</div>
                                 </td>
                             </tr>
                         @endforeach

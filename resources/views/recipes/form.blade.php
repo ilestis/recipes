@@ -27,7 +27,7 @@
 
 
 <div class="form-group">
-    {{ Form::label('seasons', 'Seasons', ['class' => 'control-label']) }}
+    {{ Form::label('seasons', trans('recipes.fields.seasons'), ['class' => 'control-label']) }}
     @foreach ($seasons as $season)
         {{ Form::checkbox('seasons[]', $season->id, null, ['id' => 'seasons_' . $season->id]) }} {{ Form::label('seasons_' . $season->id, trans('seasons.name.' . $season->id)) }}
     @endforeach
@@ -35,5 +35,5 @@
 
 
 <div class="form-group">
-    {!! Form::submit('Save Recipe', ['class' => 'btn btn-primary btn-block sr-button']) !!}
+    {!! Form::submit(trans('recipes.actions.save'), ['class' => 'btn btn-primary btn-block btn-lg sr-button']) !!}
 </div>

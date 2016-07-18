@@ -30,4 +30,14 @@ class SeasonPolicy
     {
         return $user->id == 1;// Admin user?
     }
+
+    /**
+     * @param User $user
+     * @param Recipe $recipe
+     * @return bool
+     */
+    public function update(User $user, Season $season)
+    {
+        return $user->id == 1;
+    }
 }

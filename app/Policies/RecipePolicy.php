@@ -26,6 +26,16 @@ class RecipePolicy
      * @param Recipe $recipe
      * @return bool
      */
+    public function view(User $user, Recipe $recipe)
+    {
+        return $user->id == $recipe->user_id;
+    }
+
+    /**
+     * @param User $user
+     * @param Recipe $recipe
+     * @return bool
+     */
     public function update(User $user, Recipe $recipe)
     {
         return $user->id == $recipe->user_id;

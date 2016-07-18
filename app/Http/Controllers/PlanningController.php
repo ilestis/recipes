@@ -6,6 +6,7 @@ use App\Repositories\PlanningRepository;
 use App\Generators\PlanningGenerator;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Exception;
 
 class PlanningController extends Controller
 {
@@ -48,8 +49,13 @@ class PlanningController extends Controller
      */
     public function generate(Request $request)
     {
-        $this->generator->generate($request->user());
-        return redirect('home')->with('success', 'plannings.validation.generated');
+        try {
+            $this->generator->generate($request->user());
+            return redirect('home')->with('success', 'plannings.validations.generated');
+        }
+        catch(Exception $e) {
+            return redirect('home')->with('error', 'plannings.errors.' . $e->getMessage());
+        }
     }
     
     /**

@@ -20,9 +20,12 @@ class RecipeRepository
     /**
      * @param User $user
      */
-    public function getRandomRecipesForUser(User $user)
+    public function getRandomRecipesForUser(User $user, array $months)
     {
         return $user->recipes()
+            ->select(['recipes.*', 'p.day'])
+            ->months($months)
+            ->notRecent()
             ->orderByRaw("RAND()")
             ->take(10)
             ->get();

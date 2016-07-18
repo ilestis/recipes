@@ -19,5 +19,5 @@
 
 
 <div class="form-group">
-    {!! Form::submit(trans('plannings.actions.save'), ['class' => 'btn btn-primary btn-block sr-button']) !!}
+    {!! Form::submit(trans('plannings.actions.save'), ['class' => 'btn btn-primary btn-block btn-lg sr-button']) !!}
 </div>

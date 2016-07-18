@@ -1,7 +1,7 @@
 @if (count($errors) > 0)
         <!-- Form Error List -->
 <div class="alert alert-danger">
-    <strong>Whoops! Something went wrong!</strong>
+    <strong>{{ trans('app.error') }}</strong>
 
     <br><br>
 
@@ -15,7 +15,7 @@
 
 @if (session('error'))
     <div class="alert alert-danger">
-        <strong>Whoops! Something went wrong!</strong>
+        <strong>{{ trans('app.error') }}</strong>
 
         <br><br>
 
@@ -25,9 +25,6 @@
 
 @if (session('info'))
 <div class="alert alert-info">
-    <strong>Hey!</strong>
-
-    <br><br>
 
     {{ trans(session('info')) }}
 </div>
@@ -36,10 +33,6 @@
 @if (session('success'))
         <!-- Form Error List -->
 <div class="alert alert-success">
-    <strong>Hey!</strong>
-
-    <br><br>
-
     {{ trans(session('success')) }}
 </div>
 @endif

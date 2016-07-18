@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@include('layouts.header', ['title' => 'Create a Season'])
+@include('layouts.header', ['title' => trans('seasons.titles.create')])
 
 @section('content')
     <section id="seasonCreate">
@@ -10,21 +10,11 @@
                     @include('common.flashs')
 
                     {!! Form::open(['route' => 'season.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
-                     {{ csrf_field() }}
-
-
-                        <div class="form-group">
-                            {!! Form::label('name', trans('seasons.fields.name'), ['class' => 'control-label']) !!}
-                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::submit(trans('seasons.actions.save'), ['class' => 'btn btn-primary btn-block sr-button']) !!}
-                        </div>
+                        @include('seasons.form')
                     {!! Form::close() !!}
                 </div>
-                <div class="col-lg-12 text-center">
-                    {{ link_to('season', trans('seasons.actions.back'), ['class' => 'btn btn-default']) }}
+                <div class="col-lg-12">
+                    {{ link_to(URL::previous(), trans('seasons.actions.back'), ['class' => 'btn btn-default btn-block']) }}
                 </div>
             </div>
         </div>
