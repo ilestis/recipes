@@ -22,6 +22,7 @@ return [
     ],
 
     'actions' => [
+        'create' => 'Add',
         'save' => 'Save',
         'edit' => 'Edit',
         'delete' => 'Delete',

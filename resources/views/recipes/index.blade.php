@@ -9,7 +9,6 @@
                 <div class="col-lg-12">
                     <p>
                         {{ trans('recipes.header') }}
-                        {{ link_to('recipe/create', 'New Recipe', ['class' => 'btn btn-primary pull-right']) }}
                     </p>
 
                     @include('common.flashs')
@@ -23,7 +22,11 @@
                             <th>{{ trans('recipes.fields.duration') }}</th>
                             <th>{{ trans('recipes.fields.difficulty') }}</th>
                             <th>{{ trans('recipes.fields.frequency') }}</th>
-                            <th>&nbsp;</th>
+                            <th class="text-right">
+                                <a href="{{ route('recipe.create') }}" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-plus"></i> {{ trans('recipes.actions.create') }}
+                                </a>
+                            </th>
                         </thead>
 
                         <!-- Table Body -->
@@ -43,8 +46,8 @@
                                 <td class="table-text">
                                     <div>{{ trans('recipes.values.frequency.' . $recipe->frequency) }}</div>
                                 </td>
-                                <td>
-                                    <a href="{{ route('recipe.edit', ['id' => $recipe->id]) }}" class="btn btn-primary pull-right">
+                                <td class="text-right">
+                                    <a href="{{ route('recipe.edit', ['id' => $recipe->id]) }}" class="btn btn-primary">
                                         <i class="fa fa-btn fa-pencil"></i>{{ trans('recipes.actions.edit') }}
                                     </a>
                                 </td>

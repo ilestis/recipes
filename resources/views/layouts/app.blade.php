@@ -16,6 +16,7 @@
 
     {{-- Styles --}}
     <link href="/assets/creative/css/creative.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/jquery-ui-1.12.0/jquery-ui.min.css" rel="stylesheet" type="text/css">
     <link href="/css/app.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -114,10 +115,12 @@
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="/assets/jquery-ui-1.12.0/jquery-ui.min.js"></script>
     <script src="/assets/scrollreveal/scrollreveal.min.js"></script>
     <!-- Theme -->
     <script src="/assets/creative/js/creative.js"></script>
 
+    <script src="/js/app.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>

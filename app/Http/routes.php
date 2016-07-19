@@ -24,6 +24,7 @@ Route::auth();
 Route::get('home', 'PlanningController@index');
 Route::get('generate', 'PlanningController@generate');
 Route::get('history', 'PlanningController@history');
+Route::get('shopping_list', 'ShoppingListController@index');
 
 Route::resource('recipe', 'RecipeCrudController');
 Route::resource('season', 'SeasonCrudController');

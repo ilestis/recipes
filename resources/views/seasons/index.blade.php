@@ -9,7 +9,6 @@
                 <div class="col-lg-12">
                     <p>
                         {{ trans('seasons.header') }}
-                        {{ link_to('season/create', 'New Season', ['class' => 'btn btn-primary pull-right']) }}
                     </p>
 
                     @include('common.flashs')
@@ -20,6 +19,11 @@
                         <!-- Table Headings -->
                         <thead>
                         <th>{{ trans('seasons.fields.name') }}</th>
+                        <th class="text-right">
+                            <a href="{{ route('season.create') }}" class="btn btn-primary">
+                                <i class="fa fa-btn fa-plus"></i> {{ trans('seasons.actions.create') }}
+                            </a>
+                        </th>
                         </thead>
 
                         <!-- Table Body -->
@@ -28,7 +32,12 @@
                             <tr>
                                 <!-- Task Name -->
                                 <td class="table-text">
-                                    <div>{{ link_to_route('season.edit', $season->name, $season->id) }}</div>
+                                    {{ $season->name }}
+                                </td>
+                                <td class="text-right">
+                                    <a href="{{ route('season.edit', ['id' => $season->id]) }}" class="btn btn-primary">
+                                        <i class="fa fa-btn fa-pencil"></i>{{ trans('seasons.actions.edit') }}
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

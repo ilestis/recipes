@@ -13,6 +13,7 @@ return [
         'index' => 'Planning',
         'edit' => 'Edit a Planned Meal',
         'view' => 'Details of a Planned Meal',
+        'create' => 'Plan a new meal',
     ],
 
     'helpers' => [
@@ -28,6 +29,8 @@ return [
         'show' => 'Show',
         'generate' => 'Generate meals for the next few days',
         'delete' => 'Remove',
+        'create' => 'Add',
+        'shopping_list' => 'Shopping List',
     ],
 
     'values' => [

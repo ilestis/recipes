@@ -7,10 +7,14 @@
 <section id="planning">
     <div class="container">
         <div class="row">
+            <div class="col-lg-12 text-right">
+
+                {{ link_to('generate', trans('plannings.actions.generate'), ['class' => 'btn btn-primary']) }}
+                {{ link_to('shopping_list', trans('plannings.actions.shopping_list'), ['class' => 'btn btn-primary']) }}
+            </div>
             <div class="col-lg-12">
                 <p>
                     {{ trans('plannings.header') }}
-                    {{ link_to('generate', trans('plannings.actions.generate'), ['class' => 'btn btn-primary pull-right']) }}
                 </p>
 
                 @include('common.flashs')
@@ -23,7 +27,11 @@
                         <th>{{ trans('plannings.fields.recipe_id') }}</th>
                         <th>{{ trans('plannings.fields.day') }}</th>
                         <th>{{ trans('plannings.fields.time') }}</th>
-                        <th>&nbsp;</th>
+                        <th class="text-right">
+                            <a href="{{ route('planning.create') }}" class="btn btn-primary">
+                                <i class="fa fa-btn fa-plus"></i> {{ trans('plannings.actions.create') }}
+                            </a>
+                        </th>
                     </thead>
 
                     <!-- Table Body -->
@@ -40,9 +48,12 @@
                             <td class="table-text">
                                 <div>{{ trans('plannings.values.time.' . $planning->is_lunch) }}</div>
                             </td>
-                            <td>
-                                <a href="{{ route('planning.show', ['id' => $planning->id]) }}" class="btn btn-primary pull-right">
+                            <td class="text-right">
+                                <a href="{{ route('planning.show', ['id' => $planning->id]) }}" class="btn btn-danger">
                                     <i class="fa fa-btn fa-eye"></i>{{ trans('plannings.actions.show') }}
+                                </a>
+                                <a href="{{ route('planning.edit', ['id' => $planning->id]) }}" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-pencil"></i>{{ trans('plannings.actions.edit') }}
                                 </a>
                             </td>
                         </tr>

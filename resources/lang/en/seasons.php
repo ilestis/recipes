@@ -18,9 +18,11 @@ return [
     ],
 
     'actions' => [
+        'edit' => 'Edit',
         'save' => 'Save',
         'delete' => 'Delete',
         'back' => 'Back to Seasons',
+        'create' => 'Add',
     ],
 
     'name' => [

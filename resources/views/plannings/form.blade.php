@@ -7,7 +7,7 @@
 
 <div class="form-group">
     {{ Form::label('day', trans('plannings.fields.day'), ['class' => 'control-label']) }}
-    {{ Form::date('day', null, ['class' => 'form-control']) }}
+    {{ Form::text('day', null, ['class' => 'form-control', 'data-type' => 'datepicker']) }}
 </div>
 
 <div class="form-group">
