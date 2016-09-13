@@ -14,6 +14,7 @@ class Recipe extends Model
         'duration',
         'difficulty',
         'frequency',
+        'url',
     ];
 
     /**

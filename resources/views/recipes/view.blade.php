@@ -24,6 +24,11 @@
                     <dt>{{ trans('recipes.fields.difficulty') }}</dt>
                     <dd>{{ trans('recipes.values.difficulty.' . $recipe->difficulty) }}</dd>
 
+                    @if ($recipe->url)
+                    <dt>{{ trans('recipes.fields.url') }}</dt>
+                    <dd>{!! nl2br(e($recipe->url)) !!}</dd>
+                    @endif
+
                     <dt>{{ trans('recipes.fields.frequency') }}</dt>
                     <dd>{{ trans('recipes.values.frequency.' . $recipe->frequency) }}</dd>
 

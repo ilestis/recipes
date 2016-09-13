@@ -11,6 +11,11 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('url', trans('recipes.fields.url'), ['class' => 'control-label']) !!}
+    {!! Form::text('url', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
     {{ Form::label('duration', trans('recipes.fields.duration'), ['class' => 'control-label']) }}
     {{ Form::time('duration', null, ['class' => 'form-control']) }}
 </div>

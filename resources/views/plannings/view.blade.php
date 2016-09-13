@@ -13,7 +13,13 @@
 
                 <dl class="dl-horizontal">
                     <dt>{{ trans('recipes.fields.name') }}</dt>
-                    <dd>{{ link_to_route('recipe.show', $planning->recipe->name, ['id' => $planning->recipe_id]) }}</dd>
+                    <dd>
+                        {{ link_to_route('recipe.show', $planning->recipe->name, ['id' => $planning->recipe_id]) }}
+                        @if ($planning->recipe->url)
+                            , {{ link_to($planning->recipe->url, trans('recipes.fields.url'), ['id' => $planning->recipe_id]) }}
+                        @endif
+                    </dd>
+
 
                     <dt>{{ trans('recipes.fields.ingredients') }}</dt>
                     <dd>{!! nl2br(e($planning->recipe->ingredients)) !!}</dd>

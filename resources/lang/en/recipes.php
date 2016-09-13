@@ -36,6 +36,7 @@ return [
         'difficulty' => 'Difficulty',
         'frequency' => 'Frequency',
         'seasons' => 'Seasons',
+        'url' => 'Instructions Link'
     ],
     'values' => [
         'difficulty' => [
