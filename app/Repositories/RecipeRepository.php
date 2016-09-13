@@ -13,7 +13,7 @@ class RecipeRepository
     public function forUser(User $user)
     {
         return $user->recipes()
-            ->orderBy('created_at', 'asc')
+            ->orderBy('name', 'asc')
             ->paginate(10);
     }
 
