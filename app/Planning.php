@@ -47,7 +47,7 @@ class Planning extends Model
      */
     public function scopePlanned($query)
     {
-        return $query->whereRaw('DATE(day) >= ' . date('Y-m-d'));
+        return $query->where('day', '>=', date('Y-m-d'));
     }
 
     /**

@@ -29,7 +29,7 @@ class PlanningRepository
     {
         return $this->planning->userId($user->id)
             ->with('recipe')
-            ->where('day', '>=', date('Y-m-d'))
+            ->planned()
             ->orderBy('day', 'ASC')
             ->orderBy('is_lunch', 'ASC')
             ->paginate(10);
