@@ -26,9 +26,11 @@ Route::get('generate', 'PlanningController@generate');
 Route::get('history', 'PlanningController@history');
 Route::get('shopping_list', 'ShoppingListController@index');
 
-Route::resource('recipe', 'RecipeCrudController');
-Route::resource('season', 'SeasonCrudController');
-Route::resource('planning', 'PlanningCrudController');
+Route::resources([
+    'recipe' => 'RecipeCrudController',
+    'season' => 'SeasonCrudController',
+    'planning' => 'PlanningCrudController'
+]);
 
 Route::get('settings', 'UserSettingController@index');
 Route::post('settings', 'UserSettingController@update')->name('settings.store');

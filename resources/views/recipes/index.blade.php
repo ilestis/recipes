@@ -47,7 +47,7 @@
                                     <div>{{ trans('recipes.values.frequency.' . $recipe->frequency) }}</div>
                                 </td>
                                 <td class="text-right">
-                                    <a href="{{ route('recipe.edit', ['id' => $recipe->id]) }}" class="btn btn-primary">
+                                    <a href="{{ route('recipe.edit', $recipe->id) }}" class="btn btn-primary">
                                         <i class="fa fa-btn fa-pencil"></i>{{ trans('recipes.actions.edit') }}
                                     </a>
                                 </td>

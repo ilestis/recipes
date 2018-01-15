@@ -49,7 +49,7 @@ class RecipeCrudController extends Controller
      * @param Recipe $recipe
      * @return mixed
      */
-    public function show(Request $request, Recipe $recipe)
+    public function show(Recipe $recipe)
     {
         $this->authorize('view', $recipe);
         return view('recipes.view', compact('recipe'));
@@ -82,11 +82,10 @@ class RecipeCrudController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param Recipe $recipe
      * @return mixed
      */
-    public function edit(Request $request, Recipe $recipe)
+    public function edit(Recipe $recipe)
     {
         $this->authorize('update', $recipe);
         $seasons = $this->seasons->all();

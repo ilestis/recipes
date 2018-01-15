@@ -29,7 +29,7 @@ class PlanningCrudController extends Controller
      */
     public function create(Request $request)
     {
-        $recipes = $request->user()->recipes()->orderBy('name')->lists('name', 'id');
+        $recipes = $request->user()->recipes()->orderBy('name')->pluck('name', 'id');
         return view('plannings.create', compact('recipes'));
     }
 
@@ -69,7 +69,7 @@ class PlanningCrudController extends Controller
     {
         $this->authorize('update', $planning);
         
-        $recipes = $request->user()->recipes()->orderBy('name')->lists('name', 'id');
+        $recipes = $request->user()->recipes()->orderBy('name')->pluck('name', 'id');
         return view('plannings.edit', compact('planning', 'recipes'));
     }
 

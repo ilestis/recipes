@@ -46,7 +46,7 @@ class Recipe extends Model
      */
     public function getSeasonsAttribute()
     {
-        return $this->seasons()->lists('season_id')->toArray();
+        return $this->seasons()->pluck('season_id')->toArray();
     }
 
     /**

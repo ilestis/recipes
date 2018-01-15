@@ -62,9 +62,9 @@
                         <li><a href="{{ url('/register') }}">{{ trans('menu.register') }}</a></li>
                     @else
                         <li><a href="{{ url('/home') }}">{{ trans('menu.home') }}</a></li>
-                        <li><a href="{{ url('/recipe') }}">{{ trans('menu.recipes') }}</a></li>
+                        <li><a href="{{ route('recipe.index') }}">{{ trans('menu.recipes') }}</a></li>
                         @if(Auth::user()->id == 1)
-                            <li><a href="{{ url('/season') }}">{{ trans('menu.seasons') }}</a></li>
+                            <li><a href="{{ route('season.index') }}">{{ trans('menu.seasons') }}</a></li>
                         @endif
                         <li><a href="{{ url('/settings') }}">{{ trans('menu.settings') }}</a></li>
 

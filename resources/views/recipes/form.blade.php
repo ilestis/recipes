@@ -17,7 +17,7 @@
 
 <div class="form-group">
     {{ Form::label('duration', trans('recipes.fields.duration'), ['class' => 'control-label']) }}
-    {{ Form::time('duration', null, ['class' => 'form-control']) }}
+    {{ Form::text('duration', null, ['class' => 'form-control']) }}
 </div>
 
 <div class="form-group">
